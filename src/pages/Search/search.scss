@@ -1,0 +1,101 @@
+.search{
+    padding-block: 50px;
+    .search-result{
+        text-align: center;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        margin-block: 25px;
+        span{
+            font-weight: bold;
+        }
+    }
+    .search-list{
+        padding-inline: 5%;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    }
+    ul.ant-pagination{
+        width: fit-content;
+        margin: 30px auto 0 auto;
+        
+        li.ant-pagination-item{
+            background-color: #1c1c1c;
+            color: white;
+            border: none;
+            a,button{
+                color: inherit;
+                background-color: inherit;
+                border: none;
+            }
+        }
+        li.ant-pagination-item.ant-pagination-item-active,
+        li.ant-pagination-item:hover{
+            background-color: #dc4e3f;
+            a{
+                border-color: inherit;
+            }
+        }
+    }
+
+
+
+
+    // .pagination{
+    //     margin: 0 auto;
+    //     width: fit-content;
+    //     ul.page-list{
+    //         list-style: none;
+    //         display: flex;
+    //         li.page-item{
+    //             margin-inline: 2px;
+    //             width: 30px;
+    //             height: 30px;
+    //             border-radius: 5px;
+    //             background-color: #1c1c1c;
+    //             cursor: pointer;
+    //             &:hover{
+    //                 background-color: #dc4e3f;
+    //             }
+    //             a{
+    //                 display: block;
+    //                 height: 100%;
+    //                 width: 100%;
+    //                 color: white;
+    //                 text-decoration: none;
+    //                 font-size: 14px;
+    //                 text-align: center;
+    //                 line-height: 30px;
+    //                 transition: all .2s ease;
+    //                 border-radius: inherit;
+    //                 background-color: inherit;
+    //                 cursor: inherit;
+    //                 ion-icon{
+    //                     transform: translateY(15%);
+    //                 }
+    //             }
+    //         }
+    //         li.page-item.active{
+    //             background-color: #dc4e3f;
+    //             cursor: not-allowed;
+    //         }
+    //         li.page-item.disable{
+    //             cursor: not-allowed;
+    //             &:hover{
+    //                 background-color: #1c1c1c;
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+@media screen and (max-width: 576px){
+    .search{
+        .search-result{
+            font-size: 17px;
+        }
+        .search-list{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

@@ -1,0 +1,171 @@
+.footer{
+    background-color: #f9f9f9;
+    .footer-top{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 40px;
+        .footer-info,
+        .footer-contact,
+        .footer-policy,
+        .footer-register{
+            width: 25%;
+            padding: 0 15px;
+        }
+        .footer-info{
+            img{
+                width: 100%;
+            }
+            p{
+                margin: 10px 0;
+                font-weight: 600;
+                font-size: 13px;
+                letter-spacing: 1px;
+                ion-icon{
+                    transform: translateY(15%);
+                    margin-right: 10px;
+                }
+                a{
+                    text-decoration: none;
+                    color: inherit;
+                    transition: all .2s ease;
+                    &:hover{
+                        color: #dc4e3f;
+                    }
+                }
+            }
+        }
+        .footer-contact{
+            h4{
+                font-weight: 500;
+                text-transform: uppercase;
+                font-size: 12px;
+                margin-bottom: 25px;
+                letter-spacing: 1px;
+            }
+            p{
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                margin-bottom: 10px;
+                ion-icon{
+                    transform: translateY(15%);
+                    color: #00a885;
+                    margin-right: 5px;
+                }
+            }
+        }
+        .footer-policy{
+            h4{
+                font-weight: 500;
+                text-transform: uppercase;
+                font-size: 12px;
+                margin-bottom: 25px;
+                letter-spacing: 1px;
+            }
+            a{
+                display: block;
+                width: fit-content;
+                font-size: 12px;
+                font-weight: 600;
+                text-decoration: none;
+                color: inherit;
+                letter-spacing: 1px;
+                margin-bottom: 12px;
+                text-transform: uppercase;
+                transition: all .2s ease;
+                &:hover{
+                    color: #dc4e3f;
+                }
+            }
+        }
+        .footer-register{
+            h4{
+                font-weight: 500;
+                text-transform: uppercase;
+                font-size: 12px;
+                margin-bottom: 25px;
+                letter-spacing: 1px;
+            }
+            p{
+                font-weight: 600;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+            form{
+                margin: 15px 0;
+                input{
+                    display: block;
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #f0f0f0;
+                    border: none;
+                    outline: none;
+                    font-weight: bold;
+                    font-size: 13px;
+                }
+                button{
+                    display: block;
+                    width: 100%;
+                    margin-top: 10px;
+                    padding: 10px;
+                    border: thin solid black;
+                    background-color: black;
+                    color: white;
+                    outline: none;
+                    font-weight: 400;
+                    letter-spacing: 2px;
+                    font-size: 13px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: all .2s ease;
+                    &:hover{
+                        background: white;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .footer{
+        .footer-top{
+            padding: 40px 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px){
+    .footer{
+        .footer-top{
+            padding: 40px 100px;
+            .footer-info,
+            .footer-contact,
+            .footer-policy,
+            .footer-register{
+                width: 50%;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .footer{
+        .footer-top{
+            padding: 40px 10px;
+            .footer-info,
+            .footer-contact,
+            .footer-policy,
+            .footer-register{
+                width: 100%;
+            }
+            .footer-info > a{
+                display: block;
+                width: fit-content;
+                margin: 0 auto;
+            }
+        }
+    }
+}

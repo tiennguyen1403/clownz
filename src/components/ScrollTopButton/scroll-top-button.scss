@@ -1,0 +1,27 @@
+.scroll-top-button{
+    position: fixed;
+    bottom: 50px;
+    right: -20px;
+    transform: rotate(-90deg);
+    opacity: 0;
+    transition: all .3s ease;
+    width: fit-content;
+    pointer-events: none;
+    span{
+        color: #1c1c1c;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all .2s ease;
+        &:hover{
+            color: #dc4e3f;
+        }
+    }
+    ion-icon{
+        transform: translateY(25%);
+    }
+}
+
+.scroll-top-button.show-scroll-top-button{
+    opacity: 1;
+    pointer-events: all;
+}

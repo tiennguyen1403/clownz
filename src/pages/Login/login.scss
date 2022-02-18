@@ -1,0 +1,106 @@
+.login{
+    padding: 50px 0;
+    h1,p{
+        width: fit-content;
+        margin: 0 auto;
+    }
+    h1{
+        font-size: 26px;
+        color: #212b25;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+    p{
+        font-size: 14px;
+        color: #333;
+        letter-spacing: 0.5px;
+    }
+    & > span {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 13px;
+        font-weight: 500;
+        a{
+            color: #dc4e3f;
+            text-decoration: none;
+            transition: all .2s ease;
+            &:hover{
+                color: black;
+            }
+        }
+    }
+    .login-form{
+        margin: 25px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button{
+            color: white;
+            background-color: #1c1c1c;
+            font-size: 13px;
+            border: thin solid black;
+            width: 25%;
+            height: 50px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all .2s ease;
+            &:hover{
+                background-color: white;
+                color: black;
+            }
+        }
+
+    }
+    .third-party-login{
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+        .my-facebook-button,
+        .my-google-button{
+            color: white;
+            padding: 8px 0;
+            margin: 0 10px;
+            width: 120px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: all .2s ease;
+            font-size: 13px;
+            &:hover{
+                opacity: .8;
+            }
+            ion-icon{
+                zoom: 1.2;
+                margin-right: 2px;
+                transform: translateY(15%);
+            }
+        }
+        .my-facebook-button{
+            background-color: #0657a3;
+        }
+        .my-google-button{
+            background-color: #EA4335;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .login{
+        h1{
+            font-size: 22px;
+        }
+        .login-form{
+            button{
+                width: 80%;
+            }
+        }
+    }
+}

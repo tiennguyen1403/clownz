@@ -1,0 +1,106 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    &:hover{
+        .product-info{
+            opacity: 0;
+        }
+        .product-detail{
+            bottom: 5px;
+        }
+    }
+
+    .product-thumb{
+        flex: 1;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all .3s ease;
+        }
+    }
+    .product-info{
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-block: 10px;
+
+        & > p{
+            margin: 0;
+            padding: 0;
+        }
+
+        &__category{
+            text-transform: uppercase;
+            opacity: .4;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        &__name{
+            font-size: 14px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-word;
+            text-align: center;
+        }
+        &__price{
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+    .product-detail{
+        width: 100%;
+        position: absolute;
+        bottom: -50px;
+        transition: all .4s ease;
+
+        button{
+            width: inherit;
+            padding: 9px 0;
+            border: thin solid black;
+            background: transparent;
+            cursor: pointer;
+            transition: all .2s ease;
+            background: white;
+
+            &:hover{
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px){
+    .product{
+        &:hover{
+            .product-info{
+                opacity: 1;
+            }
+        }
+        .product-info{
+            .product-info__name,
+            .product-info__category,
+            .product-info__price{
+                font-size: 12px;
+            }
+        }
+        .product-detail{
+            display: none;
+        }
+    }
+}

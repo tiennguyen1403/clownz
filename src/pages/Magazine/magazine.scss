@@ -1,0 +1,73 @@
+.magazine{
+    .magazine-cover{
+        background: url("https://bizweb.dktcdn.net/100/414/728/themes/803486/assets/evo-blog-banner.jpg?1642695193850") no-repeat center center;
+        background-size: cover;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1{
+            color: white;
+            letter-spacing: 2px;
+        }
+    }
+    .magazine-main-content{
+        padding: 5%;
+
+        .magazine-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+            grid-gap: 20px;
+
+            .magazine-item{
+                &:hover{
+                    .magazine-thumb img{
+                        transform: scale(1.1);
+                    }
+                    .magazine-title{
+                        color: #dc4e3f;
+                    }
+                }
+                .magazine-thumb{
+                    overflow: hidden;
+                    border-radius: 5px;
+                    height: 300px;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: all .5s ease;
+                    }
+                }
+                .magazine-title{
+                    font-size: 15px;
+                    letter-spacing: 1px;
+                    margin-block: 10px 20px;
+                    transition: all .2s ease;
+                }
+            }
+        }
+        ul.ant-pagination{
+            width: fit-content;
+            margin: 30px auto 0 auto;
+            
+            li.ant-pagination-item{
+                background-color: #1c1c1c;
+                color: white;
+                border: none;
+                a,button{
+                    color: inherit;
+                    background-color: inherit;
+                    border: none;
+                }
+            }
+            li.ant-pagination-item.ant-pagination-item-active,
+            li.ant-pagination-item:hover{
+                background-color: #dc4e3f;
+                a{
+                    border-color: inherit;
+                }
+            }
+        }
+    }
+}
