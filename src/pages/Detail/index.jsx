@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { InputNumber, Tabs } from "antd";
 import numeral from "numeral";
 
@@ -11,20 +12,20 @@ import ProductList from "../../components/ProductList";
 const { TabPane } = Tabs;
 
 function Detail() {
+  const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
   const [relatedList, setRelatedList] = useState(null);
   const { id } = useParams();
 
   const fetchProduct = () => {
     if (!id) return null;
-    return new Promise((resolve, reject) => {
-      axiosClient
-        .get(`products/${id}`)
-        .then((res) => {
-          resolve(res.data);
-        })
-        .catch((err) => console.log(err.response.data));
-    });
+    axiosClient
+      .get(`products/${id}`)
+      .then((res) => {
+        setProduct(res.data);
+        fetchRelatedList(res.data.category);
+      })
+      .catch((err) => console.log(err.response.data));
   };
   const fetchRelatedList = (category) => {
     axiosClient
@@ -34,12 +35,15 @@ function Detail() {
       })
       .catch((err) => console.log(err));
   };
+  const addToCart = () => {
+    dispatch({ type: "ADD_PRODUCT", payload: product });
+  };
 
-  useEffect(async () => {
-    const productResponse = await fetchProduct();
-    setProduct(productResponse);
-    fetchRelatedList(productResponse.category);
+  useEffect(() => {
+    fetchProduct();
   }, [id]);
+
+  console.log(product);
 
   if (!product) return <Loader />;
   return (
@@ -61,7 +65,9 @@ function Detail() {
           <div className="detail-quantity">
             Số lượng: <InputNumber min={1} max={50} defaultValue={1} />
           </div>
-          <button className="detail-buy-btn">mua ngay</button>
+          <button className="detail-buy-btn" onClick={addToCart}>
+            add to cart
+          </button>
           <div className="delivery">
             <span className="delivery-hotline">
               Gọi đặt mua: <a href="#a">058660 8660</a> (miễn phí 8:30 - 21:30).

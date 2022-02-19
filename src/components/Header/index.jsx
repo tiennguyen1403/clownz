@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createSearchParams, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import ClickAwayListener from "react-click-away-listener";
-import { notification } from "antd";
+import { notification, Modal, Table, Button } from "antd";
 
 import "./header.scss";
 
@@ -14,15 +14,79 @@ function Header() {
   const [isSearch, setIsSearch] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
+  const [isShowCart, setIsShowCart] = useState(false);
   const [keyword, setKeyword] = useState("");
   //global state
   const userInfo = useSelector((state) => state.user.userInfo);
+  const cart = useSelector((state) => state.product.cart);
+
+  const columns = [
+    {
+      title: "Image",
+      dataIndex: "image",
+      render: (imageUrl) => <img src={imageUrl} className="cart__img" alt="" />,
+      key: "image",
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+    {
+      title: "Quantity",
+      dataIndex: "quantity",
+      key: "quantity",
+    },
+    {
+      title: "Total",
+      dataIndex: "total",
+      key: "total",
+    },
+    {
+      title: "",
+      dataIndex: "remove",
+      key: "remove",
+    },
+  ];
+  const data = cart.map((item, index) => {
+    return {
+      key: index + 1,
+      image: item.info.imageUrl,
+      name: item.info.name,
+      price: item.info.price,
+      quantity: item.quantity,
+      total: item.info.price * item.quantity,
+      remove: (
+        <span className="cart__remove" onClick={() => handleRemove(item.id)}>
+          <ion-icon name="trash-outline"></ion-icon>
+        </span>
+      ),
+    };
+  });
 
   const handleSearchClickAway = () => {
     if (isSearch) setIsSearch(false);
   };
   const handleMenuClickAway = () => {
     if (isMenu) setIsMenu(false);
+  };
+  const handleToggleCart = () => {
+    setIsShowCart(!isShowCart);
+  };
+  const handleRemove = (id) => {
+    dispatch({ type: "REMOVE_PRODUCT", payload: id });
+  };
+  const handleBuy = () => {
+    dispatch({ type: "RESET_PRODUCT" });
+    handleToggleCart();
+    notification.success({
+      description: "Thank you! Have a good day ^^",
+    });
   };
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -148,10 +212,10 @@ function Header() {
               </Link>
             </div>
             <div className="right-nav">
-              <button className="cart-btn">
+              <button className="cart-btn" onClick={handleToggleCart}>
                 <span>Giỏ hàng</span>
                 <ion-icon name="cart-sharp"></ion-icon>
-                <span className="cart-quantity">17</span>
+                <span className="cart-quantity">{cart.length}</span>
               </button>
               <button className="search-btn" onClick={() => setIsSearch(true)}>
                 <ion-icon name="search"></ion-icon>
@@ -227,6 +291,20 @@ function Header() {
           </div>
         </div>
       </ClickAwayListener>
+      <Modal
+        title="Product Cart"
+        visible={isShowCart}
+        onCancel={handleToggleCart}
+        width={700}
+        footer={[
+          <Button onClick={handleToggleCart}>Cancel</Button>,
+          <Button type="primary" onClick={handleBuy}>
+            Buy now
+          </Button>,
+        ]}
+      >
+        <Table dataSource={data} columns={columns} pagination={false} />
+      </Modal>
     </>
   );
 }
